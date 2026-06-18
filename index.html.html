@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>张耀文 | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0a0a1a;color:#e0e0e0;font-family:"Inter",system-ui,-apple-system,sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#0a0a1a}::-webkit-scrollbar-thumb{background:#1a1a2e;border-radius:3px}
+::selection{background:rgba(233,69,96,.3);color:#fff}
+.gradient-text{background:linear-gradient(135deg,#e94560,#ff6b81);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.glass-card{background:rgba(255,255,255,.03);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.06);border-radius:20px}
+.section-container{max-width:1700px;margin:0 auto;padding:0 32px}
+@media(max-width:767px){.section-container{padding:0 20px}}
+.accent-btn{display:inline-flex;align-items:center;gap:12px;padding:16px 40px;border-radius:999px;background:#e94560;color:#fff;font-weight:500;font-size:14px;text-decoration:none;transition:all .3s}
+.accent-btn:hover{background:#c73e54;transform:scale(1.05);box-shadow:0 0 40px rgba(233,69,96,.25)}
+
+/* Navbar */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:50;transition:all .5s;height:64px;display:flex;align-items:center}
+.navbar.scrolled{background:rgba(10,10,26,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05);box-shadow:0 4px 30px rgba(0,0,0,.3)}
+.nav-inner{max-width:1700px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;width:100%}
+.logo{font-size:18px;font-weight:700;text-decoration:none;font-family:"DM Sans","Inter",system-ui,sans-serif;letter-spacing:-.5px}
+.logo span{background:linear-gradient(135deg,#e94560,#ff6b81);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo .sub{color:rgba(255,255,255,.6);margin-left:4px;font-size:13px;font-weight:400}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+@media(max-width:767px){.nav-links{display:none}}
+.nav-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:13px;letter-spacing:.5px;transition:color .3s}
+.nav-links a:hover{color:#fff}
+.nav-cta{display:flex;align-items:center;gap:8px;padding:8px 20px;border-radius:999px;background:rgba(233,69,96,.1);border:1px solid rgba(233,69,96,.3);color:#e94560;text-decoration:none;font-size:13px;transition:all .3s}
+.nav-cta:hover{background:#e94560;color:#fff}
+
+/* Hero */
+.hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#0a0a1a}
+.bg-orb{position:absolute;border-radius:50%;filter:blur(120px)}
+.bg-orb-1{top:25%;left:25%;width:400px;height:400px;background:rgba(233,69,96,.1);animation:pulse 4s ease-in-out infinite}
+.bg-orb-2{bottom:25%;right:25%;width:320px;height:320px;background:rgba(59,130,246,.08);animation:pulse 4s ease-in-out 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.bg-grid{position:absolute;inset:0;opacity:.03;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:60px 60px}
+.hero .content{position:relative;z-index:10;text-align:center;padding:0 32px}
+.eyebrow{color:rgba(233,69,96,.7);font-size:12px;letter-spacing:.3em;margin-bottom:24px;font-weight:500}
+.hero h1{font-size:clamp(48px,8vw,120px);font-weight:700;line-height:1.05;margin-bottom:24px;font-family:"DM Sans","Inter",system-ui,sans-serif;letter-spacing:-2px;color:#fff}
+.hero .subtitle{font-size:clamp(16px,2vw,20px);color:rgba(255,255,255,.4);max-width:640px;margin:0 auto 40px;line-height:1.6;font-weight:300}
+.hero .subtitle small{color:rgba(255,255,255,.25);font-size:15px}
+.cta-row{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.ghost-btn{display:flex;align-items:center;gap:8px;padding:16px 32px;color:rgba(255,255,255,.45);text-decoration:none;font-size:14px;transition:color .3s}
+.ghost-btn:hover{color:#fff}
+.fade-bottom{position:absolute;bottom:0;left:0;right:0;height:128px;background:linear-gradient(to top,#0a0a1a,transparent);z-index:10}
+.bounce{animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* About */
+.about{padding:120px 0}
+.about .grid{display:grid;grid-template-columns:1fr;gap:48px}
+@media(min-width:1024px){.about .grid{grid-template-columns:2fr 3fr}}
+.avatar-wrap{position:relative;display:inline-block;margin-bottom:32px}
+.avatar{width:192px;height:192px;border-radius:16px;background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.08)}
+.avatar .char{font-size:64px;font-weight:700;background:linear-gradient(135deg,#e94560,#ff6b81);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:"DM Sans","Inter",system-ui,sans-serif}
+.avatar-badge{position:absolute;bottom:-12px;right:-12px;width:48px;height:48px;border-radius:12px;background:#e94560;display:flex;align-items:center;justify-content:center;color:#fff;font-family:monospace;font-size:14px}
+.info-line{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.4);font-size:13px;margin-bottom:12px}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(min-width:768px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+.stat-card{text-align:center;padding:20px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);transition:border-color .5s}
+.stat-card:hover{border-color:rgba(233,69,96,.25)}
+.stat-value{font-size:28px;font-weight:700;background:linear-gradient(135deg,#e94560,#ff6b81);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:"DM Sans","Inter",system-ui,sans-serif}
+.stat-label{font-size:12px;color:rgba(255,255,255,.3);margin-top:4px}
+
+/* Projects */
+.projects{padding:120px 0}
+.section-label{color:rgba(233,69,96,.5);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-size:clamp(36px,5vw,56px);font-weight:700;font-family:"DM Sans","Inter",system-ui,sans-serif;margin-bottom:16px;color:#fff}
+.section-desc{color:rgba(255,255,255,.3);margin-bottom:64px;max-width:560px}
+.project-card{display:grid;grid-template-columns:1fr;border-radius:20px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);margin-bottom:32px;transition:border-color .7s}
+.project-card:hover{border-color:rgba(255,255,255,.12)}
+@media(min-width:1024px){.project-card{grid-template-columns:4fr 8fr}}
+.project-visual{padding:40px;position:relative;overflow:hidden}
+.project-visual .glow{position:absolute;top:0;right:0;width:200px;height:200px;border-radius:50%;filter:blur(80px)}
+.proj-num{font-size:72px;font-weight:700;color:rgba(255,255,255,.06);font-family:"DM Sans","Inter",system-ui,sans-serif;margin-bottom:16px}
+.proj-sub{font-size:18px;font-weight:700;color:#fff;font-family:"DM Sans","Inter",system-ui,sans-serif;margin-top:24px}
+.project-body{padding:40px}
+.project-body h3{font-size:clamp(24px,3vw,32px);font-weight:700;font-family:"DM Sans","Inter",system-ui,sans-serif;margin-bottom:16px;color:#fff}
+.project-body .desc{color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:16px}
+.project-body .highlight{color:rgba(233,69,96,.6);font-size:14px;line-height:1.6;margin-bottom:24px;border-left:2px solid rgba(233,69,96,.25);padding-left:16px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{padding:6px 14px;border-radius:999px;font-size:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.4)}
+.proj-link{display:inline-flex;align-items:center;gap:4px;color:rgba(255,255,255,.3);text-decoration:none;font-size:12px;margin-top:12px;transition:color .3s}
+.proj-link:hover{color:#e94560}
+
+/* Strengths */
+.strengths{padding:120px 0}
+.skills-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-bottom:80px}
+@media(min-width:768px){.skills-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1280px){.skills-grid{grid-template-columns:repeat(3,1fr)}}
+.skill-card{padding:28px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);transition:border-color .5s}
+.skill-card:hover{border-color:rgba(255,255,255,.15)}
+.skill-icon{width:40px;height:40px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:18px}
+.skill-card h4{font-size:17px;font-weight:700;font-family:"DM Sans","Inter",system-ui,sans-serif;margin-bottom:14px;color:#fff}
+.skill-items{display:flex;flex-wrap:wrap;gap:8px}
+.skill-item{padding:6px 14px;border-radius:8px;font-size:12px;background:rgba(255,255,255,.03);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.04)}
+.highlights-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(min-width:1024px){.highlights-grid{grid-template-columns:repeat(4,1fr)}}
+.highlight-card{padding:24px 16px;text-align:center;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);transition:border-color .5s;font-size:24px}
+.highlight-card:hover{border-color:rgba(255,255,255,.15)}
+.hl-title{font-size:14px;font-weight:600;color:#fff;margin:12px 0 4px}
+.hl-desc{font-size:12px;color:rgba(255,255,255,.35);line-height:1.5}
+
+/* Contact */
+.contact{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.c-bg-orb{position:absolute;border-radius:50%;filter:blur(120px)}
+.c-bg-orb-1{top:33%;right:33%;width:400px;height:400px;background:rgba(233,69,96,.08)}
+.c-bg-orb-2{bottom:33%;left:25%;width:320px;height:320px;background:rgba(59,130,246,.08);filter:blur(100px)}
+.bg-dots{position:absolute;inset:0;opacity:.02;background-image:radial-gradient(circle at center,rgba(255,255,255,.3) 1px,transparent 1px);background-size:40px 40px}
+.contact .content{position:relative;z-index:10;text-align:center;max-width:800px;padding:80px 32px}
+.contact h2{font-size:clamp(48px,7vw,80px);font-weight:700;font-family:"DM Sans","Inter",system-ui,sans-serif;margin:8px 0 24px;line-height:1.1;color:#fff}
+.contact .desc{color:rgba(255,255,255,.35);font-size:17px;margin-bottom:64px;line-height:1.6}
+.contact-cards{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:64px}
+@media(min-width:768px){.contact-cards{grid-template-columns:repeat(3,1fr)}}
+.contact-card{padding:24px;text-align:center;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);text-decoration:none;transition:all .5s;display:block}
+.contact-card:hover{border-color:rgba(233,69,96,.25)}
+.cc-icon{width:48px;height:48px;border-radius:12px;background:rgba(233,69,96,.08);border:1px solid rgba(233,69,96,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:#e94560;font-size:18px}
+.cc-label{font-size:11px;color:rgba(255,255,255,.25);margin-bottom:4px}
+.cc-val{font-size:14px;color:rgba(255,255,255,.6);transition:color .3s}
+.contact-card:hover .cc-val{color:#fff}
+.footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:32px;margin-top:80px;border-top:1px solid rgba(255,255,255,.04);font-size:11px;color:rgba(255,255,255,.15);text-align:left}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:rgba(255,255,255,.15);text-decoration:none;transition:color .3s}
+.footer-links a:hover{color:rgba(255,255,255,.35)}
+
+/* Section backgrounds */
+.section-bg{background:linear-gradient(180deg,#0a0a1a,rgba(26,26,46,.3),#0a0a1a)}
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo"><span>ZY</span><span class="sub">·WEN</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">关于</a></li>
+      <li><a href="#projects">项目</a></li>
+      <li><a href="#strengths">能力</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">联系我</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-grid"></div>
+  <div class="content">
+    <p class="eyebrow">PORTFOLIO · 2026</p>
+    <h1>张<span class="gradient-text">耀文</span></h1>
+    <p class="subtitle">商务英语 × 技术工具 · 以代码解决真实问题<br><small>Python 开发实习生 / 技术运营 / 软件开发</small></p>
+    <div class="cta-row">
+      <a href="#contact" class="accent-btn">取得联系</a>
+      <a href="#about" class="ghost-btn">了解更多 <span class="bounce">↓</span></a>
+    </div>
+  </div>
+  <div class="fade-bottom"></div>
+</section>
+
+<section id="about" class="about">
+  <div class="section-container">
+    <div class="grid">
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div class="avatar-wrap"><div class="avatar"><span class="char">张</span></div><div class="avatar-badge">&lt;/&gt;</div></div>
+        <h2 style="font-size:28px;font-weight:700;font-family:DM Sans,sans-serif;margin-bottom:6px;color:#fff">张耀文</h2>
+        <p style="color:rgba(233,69,96,.7);font-size:13px;letter-spacing:.5px;margin-bottom:24px">Python 开发实习生 / 技术运营</p>
+        <div style="width:100%">
+          <div class="info-line">📍 中国</div>
+          <div class="info-line">📞 193-3054-3367</div>
+          <div class="info-line">✉ sterling999921@gmail.com</div>
+          <div class="info-line">📅 2025.09 – 2029.06（预计）</div>
+        </div>
+      </div>
+      <div>
+        <p class="section-label">About Me</p>
+        <h3 style="font-size:26px;font-weight:700;font-family:DM Sans,sans-serif;margin-bottom:20px;color:#fff">非典型技术人，<span class="gradient-text">商务 × 技术 × 语言</span></h3>
+        <div style="color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:24px">
+          <p>非计算机科班出身，但具备强烈的技术好奇心与自学能力。擅长用 Python 等工具解决实际业务问题，英语能力支撑国际化技术文档阅读与协作。</p>
+          <p style="margin-top:10px">有创业与一线服务经历，抗压能力强，理解"从需求到落地"的产品思维。希望以"技术 + 商业 + 语言"的复合背景进入互联网/软件开发领域。</p>
+        </div>
+        <div class="glass-card" style="padding:24px;margin-bottom:24px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <span style="color:#e94560;font-size:18px">🎓</span>
+            <span style="font-weight:600;color:#fff">教育背景</span>
+          </div>
+          <p style="color:rgba(255,255,255,.6);font-size:14px">韶关学院 · 商务英语专业（3+1 国际合作班）· 本科</p>
+          <p style="color:rgba(255,255,255,.3);font-size:12px;margin-top:4px">商务英语 · 国际贸易实务 · 跨文化商务沟通 · 市场营销</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-value">3+</div><div class="stat-label">实战项目</div></div>
+          <div class="stat-card"><div class="stat-value">CET-6</div><div class="stat-label">英语能力</div></div>
+          <div class="stat-card"><div class="stat-value">2Y</div><div class="stat-label">创业经历</div></div>
+          <div class="stat-card"><div class="stat-value">2029</div><div class="stat-label">预计毕业</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="projects section-bg">
+  <div class="section-container">
+    <p class="section-label">Selected Work</p>
+    <h2 class="section-title">精选<span class="gradient-text">项目</span></h2>
+    <p class="section-desc">从商业分析到工具开发，每个项目都在解决真实问题</p>
+
+    <div class="project-card">
+      <div class="project-visual" style="background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(6,182,212,.12))">
+        <div class="glow" style="background:rgba(59,130,246,.08)"></div>
+        <span class="proj-num">01</span>
+        <p class="proj-sub">安克创新 vs 贝尔金</p>
+      </div>
+      <div class="project-body">
+        <h3>竞品商业数据分析</h3>
+        <p class="desc">使用 Python 进行公开行业数据采集与清洗，运用 Pandas 进行数据结构化处理，结合 Excel/PPT 完成数据可视化呈现。基于 SWOT、PEST 模型完成 20 页全英文商业分析报告，课堂全英文演讲汇报。</p>
+        <p class="highlight">锻炼了“用技术工具处理真实商业数据 + 用英语表达技术结论”的复合能力</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">SWOT</span><span class="tag">PEST</span><span class="tag">全英文报告</span></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-visual" style="background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(34,197,94,.12))">
+        <div class="glow" style="background:rgba(16,185,129,.08)"></div>
+        <span class="proj-num">02</span>
+        <p class="proj-sub">Python 命令行脚本</p>
+        <a href="https://github.com" target="_blank" class="proj-link">查看代码 →</a>
+      </div>
+      <div class="project-body">
+        <h3>创业进销存管理工具</h3>
+        <p class="desc">针对摆摊创业中的库存与成本核算需求，独立编写 Python 命令行脚本记录商品进销存数据。实现 CSV 文件存储、自动利润计算与简单的数据统计功能，替代手工记账。</p>
+        <p class="highlight">解决实际业务中的效率问题，理解“从需求到代码落地”的完整流程</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">CSV</span><span class="tag">CLI</span><span class="tag">自动化</span></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-visual" style="background:linear-gradient(135deg,rgba(168,85,247,.12),rgba(236,72,153,.12))">
+        <div class="glow" style="background:rgba(168,85,247,.08)"></div>
+        <span class="proj-num">03</span>
+        <p class="proj-sub">技术 + 语言</p>
+      </div>
+      <div class="project-body">
+        <h3>商务英语口语辅助整理</h3>
+        <p class="desc">使用 Python 整理 6 大商务场景的英语对话语料，制作结构化的复习卡片与自测清单。输出为 Markdown 文档与 Excel 表格，提升复习效率。</p>
+        <p class="highlight">锻炼自动化思维：用代码解决重复性学习整理工作</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Markdown</span><span class="tag">Excel</span><span class="tag">自动化</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="strengths" class="strengths">
+  <div class="section-container">
+    <p class="section-label">Capabilities</p>
+    <h2 class="section-title">个人<span class="gradient-text">优势</span></h2>
+    <p class="section-desc">非科班出身，但技术与自学能力不输专业</p>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon" style="background:rgba(233,69,96,.08);border:1px solid rgba(233,69,96,.15);color:#e94560">&lt;/&gt;</div>
+        <h4>编程语言</h4>
+        <div class="skill-items"><span class="skill-item">Python 基础语法</span><span class="skill-item">文件处理</span><span class="skill-item">简单脚本开发</span><span class="skill-item">数据结构入门</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon" style="background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15);color:#3b82f6">🗄</div>
+        <h4>开发工具</h4>
+        <div class="skill-items"><span class="skill-item">VS Code</span><span class="skill-item">Git 基础操作</span><span class="skill-item">Jupyter</span><span class="skill-item">Markdown</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon" style="background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.15);color:#10b981">📊</div>
+        <h4>数据处理</h4>
+        <div class="skill-items"><span class="skill-item">Pandas 基础</span><span class="skill-item">Excel 高级函数</span><span class="skill-item">数据可视化</span><span class="skill-item">图表制作</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon" style="background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.15);color:#a855f7">🌐</div>
+        <h4>英语能力</h4>
+        <div class="skill-items"><span class="skill-item">CET-4/6</span><span class="skill-item">技术文档阅读</span><span class="skill-item">Stack Overflow</span><span class="skill-item">商务英语演讲</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon" style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.15);color:#f59e0b">✨</div>
+        <h4>其他技能</h4>
+        <div class="skill-items"><span class="skill-item">剪映视频剪辑</span><span class="skill-item">商务演讲汇报</span><span class="skill-item">社群运营</span><span class="skill-item">成本核算</span></div>
+      </div>
+    </div>
+
+    <div class="highlights-grid">
+      <div class="highlight-card">📖<p class="hl-title">英语技术阅读</p><p class="hl-desc">流畅阅读英文技术文档与开源项目资料</p></div>
+      <div class="highlight-card">🤖<p class="hl-title">自动化思维</p><p class="hl-desc">习惯用 Python 解决重复性工作，提升效率</p></div>
+      <div class="highlight-card">🎬<p class="hl-title">内容制作</p><p class="hl-desc">剪映视频剪辑 + 商务英语演讲与汇报</p></div>
+      <div class="highlight-card">🧩<p class="hl-title">复合背景</p><p class="hl-desc">技术 + 商业 + 语言三维能力融合</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="c-bg-orb c-bg-orb-1"></div>
+  <div class="c-bg-orb c-bg-orb-2"></div>
+  <div class="bg-dots"></div>
+  <div class="content">
+    <p class="section-label">Get In Touch</p>
+    <h2>Let's <span class="gradient-text">Talk.</span></h2>
+    <p class="desc">正在寻找 Python 开发实习或技术运营机会。<br>如果你对我的经历感兴趣，欢迎随时联系。</p>
+
+    <div class="contact-cards">
+      <a href="mailto:sterling999921@gmail.com" class="contact-card">
+        <div class="cc-icon">✉</div>
+        <p class="cc-label">电子邮箱</p>
+        <p class="cc-val">sterling999921@gmail.com</p>
+      </a>
+      <a href="tel:19330543367" class="contact-card">
+        <div class="cc-icon">📞</div>
+        <p class="cc-label">联系电话</p>
+        <p class="cc-val">193-3054-3367</p>
+      </a>
+      <a href="https://github.com" target="_blank" class="contact-card">
+        <div class="cc-icon">🔗</div>
+        <p class="cc-label">GitHub</p>
+        <p class="cc-val">github.com</p>
+      </a>
+    </div>
+
+    <a href="mailto:sterling999921@gmail.com" class="accent-btn" style="font-size:16px;padding:20px 48px">发送邮件</a>
+
+    <div class="footer">
+      <p>© 2026 张耀文. All Rights Reserved.</p>
+      <div class="footer-links">
+        <a href="#">回到顶部</a>
+        <a href="#about">关于</a>
+        <a href="#projects">项目</a>
+        <a href="#strengths">能力</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('navbar');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+</script>
+</body>
+</html>
